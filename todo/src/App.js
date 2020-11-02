@@ -1,4 +1,9 @@
 import React, { useReducer } from "react";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+import styled from "styled-components";
 
 import reducer from "./reducers/index";
 import actions from "./actions/index";
@@ -6,6 +11,7 @@ import actions from "./actions/index";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import TodoList from "./components/TodoList";
+library.add(fab);
 
 const { addTodo, setNewItemText, toggleTodo, editTextTodo, deleteTodo, markAllCompleted, clearCompleted, } = actions;
 
@@ -38,6 +44,9 @@ function App() {
 	const handleToggle = (id) => {
 		dispatch(toggleTodo(id));
 	}
+	const handleDelete = (id) => {
+		dispatch(deleteTodo(id));
+	}
 
 	return (
 		<div className="App">
@@ -50,7 +59,8 @@ function App() {
 					<div className="todo-app">
 						<Sidebar handleClearCompleted={handleClearCompleted} handleMarkAllCompleted={handleMarkAllCompleted} />
 						<Header input={state.input} handleInputChanges={handleInputChanges} handleInputSubmit={handleInputSubmit} />
-						<TodoList todos={state.todos} handleToggle={handleToggle} />
+						<TodoList todos={state.todos} handleToggle={handleToggle} handleDelete={handleDelete} />
+
 					</div>
 				</section>
 			</main>
