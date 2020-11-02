@@ -35,6 +35,10 @@ function App() {
 		dispatch(markAllCompleted())
 	}
 
+	const handleToggle = (id) => {
+		dispatch(toggleTodo(id));
+	}
+
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -46,7 +50,7 @@ function App() {
 					<div className="todo-app">
 						<Sidebar handleClearCompleted={handleClearCompleted} handleMarkAllCompleted={handleMarkAllCompleted} />
 						<Header input={state.input} handleInputChanges={handleInputChanges} handleInputSubmit={handleInputSubmit} />
-						<TodoList todos={state.todos} />
+						<TodoList todos={state.todos} handleToggle={handleToggle} />
 					</div>
 				</section>
 			</main>
