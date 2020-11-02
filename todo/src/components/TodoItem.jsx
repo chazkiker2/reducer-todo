@@ -5,25 +5,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { f2ed } from '@fortawesome/free-solid-svg-icons'
 
 const Todo = styled.div`
+box-sizing: border-box;
 	display: flex;
 	flex-flow: row nowrap;
+	width: 70%;
+	margin: 0 auto;
 	justify-content: space-between;
 	align-items: center;
-	background: lightgray;
+	background: #FFF;
 	text-align: left;
-	text-decoration: ${pr => pr.checked ? "line-through" : "none"};
-	border: 1px solid black;
-	div.custom-checkbox {
-		display: inline-block;
-		height: 10px;
-		width: 10px;
-		border: 1px solid black;
-		border-radius: 50%;
-		background-color: ${pr => pr.checked ? "black" : "transparent"};
-		margin: 2px;
-	}
-	h5 {
-		display: inline-block;
+	margin: 2px;
+	padding: 2px 10px;
+	border-radius: 10px;
+	div {
+		display: inline-flex;
+		align-items: center;
+		div.custom-checkbox {
+			display: inline-block;
+			height: 10px;
+			width: 10px;
+			border: 1px solid black;
+			border-radius: 50%;
+			background-color: ${pr => pr.checked ? "black" : "transparent"};
+			margin: 2px;
+		}
+		h5 {
+			text-decoration: ${pr => pr.checked ? "line-through" : "none"};
+			display: inline-block;
+		}
 	}
 `;
 
@@ -35,7 +44,6 @@ const TodoItem = (props) => {
 				<div className="custom-checkbox" />
 				<h5>{todo.text}</h5>
 			</div>
-
 			<div>
 				<FontAwesomeIcon onClick={() => handleDelete(todo.id)} icon={["fas", "trash-alt"]} />
 			</div>
